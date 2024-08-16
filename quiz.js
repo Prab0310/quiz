@@ -101,6 +101,8 @@ quizData.splice(3, 0, {
 // Create a new array of question texts using map method
 let questionTexts = quizData.map(q => q.question);
 
+// Filter questions that have the word 'type' in them using filter method
+let typeQuestions = quizData.filter(q => q.question.includes('type'));
 
 // Calculate the total number of points using reduce method
 let totalPoints = quizData.reduce((sum, q) => sum + 1, 0);
