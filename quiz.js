@@ -82,12 +82,10 @@ let quizData = [
     answer: 1
     }
 ];
-
-// Use array methods to manage the quiz data
 quizData.push({
     question: "What is the result of 2 + '2'?",
     options: ["'22'", "4", "NaN", "error"],
-    answer: 0 // '22' (String concatenation)
+    answer: 0 
 });
 
 // Remove the last question using pop method
@@ -103,14 +101,12 @@ quizData.splice(3, 0, {
 // Create a new array of question texts using map method
 let questionTexts = quizData.map(q => q.question);
 
-// Filter questions that have the word 'type' in them using filter method
-let typeQuestions = quizData.filter(q => q.question.includes('type'));
 
 // Calculate the total number of points using reduce method
 let totalPoints = quizData.reduce((sum, q) => sum + 1, 0);
 
-let currentQuestionIndex = 0; // Start with the first question
-let score = 0; // Initial score
+let currentQuestionIndex = 0; 
+let score = 0; 
 
 // Function to load the current question and options
 function loadQuestion() {
@@ -128,7 +124,7 @@ function loadQuestion() {
 function checkAnswer(selectedOptionIndex) {
     let currentQuestion = quizData[currentQuestionIndex];
     if (selectedOptionIndex === currentQuestion.answer) {
-        score++; // Increase the score if the answer is correct
+        score++; 
         document.getElementById("feedback").textContent = "Correct!";
     } else {
         document.getElementById("feedback").textContent = "Wrong! The correct answer is " + currentQuestion.options[currentQuestion.answer];
@@ -138,18 +134,16 @@ function checkAnswer(selectedOptionIndex) {
 
 // Function to move to the next question
 function nextQuestion() {
-    currentQuestionIndex++; // Move to the next question
+    currentQuestionIndex++; 
     if (currentQuestionIndex < quizData.length) {
-        loadQuestion(); // Load the next question
+        loadQuestion(); 
     } else {
-        showFinalScore(); // Show the final score if all questions are answered
+        showFinalScore(); 
     }
 }
 
-// Function to show the final score
 function showFinalScore() {
     document.getElementById("quiz-container").innerHTML = "<h2>Your final score is " + score + " out of " + totalPoints + "</h2>";
 }
 
-// Load the first question when the page loads
 loadQuestion();
